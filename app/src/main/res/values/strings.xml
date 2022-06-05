@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Pixel Effect</string>
+    <string name="loading">Loading....</string>
+    <string name="pixel_effect">PIXEL EFFECT</string>
+    <string name="start">START</string>
+    <string name="album">ALBUM</string>
+    <string name="more">MORE</string>
+    <string name="trending_apps">Trending Apps</string>
+    <string name="my_creation">My Creation</string>
+</resources>
