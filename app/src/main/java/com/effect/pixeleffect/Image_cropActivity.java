@@ -2,7 +2,6 @@ package com.effect.pixeleffect;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,9 +14,8 @@ public class Image_cropActivity extends AppCompatActivity {
 
     ImageView done;
     public static CropImageView cropImageView;
-    public static Bitmap bitmap1;
-  public static Uri imageuri;
-  public static Uri uri;
+//    public static Bitmap bitmap1;
+  public static Bitmap imageuri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +29,18 @@ public class Image_cropActivity extends AppCompatActivity {
 
         //     imageuri=getIntent().getData();
 
-        imageuri = MainActivity.uri;
+//        imageuri = MainActivity.uri;
 
-        cropImageView.setImageUriAsync(imageuri);
-//        cropImageView.setImageUriAsync(MainActivity.uri);
+//        cropImageView.setImageUriAsync(imageuri);
+        cropImageView.setImageUriAsync(MainActivity.uri);
+
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 //                bitmap1 =  cropImageView.getCroppedImage();
-                bitmap1 = cropImageView.getCroppedImage();
+                imageuri = cropImageView.getCroppedImage();
 
 //                cropImageView.getCroppedImage();
                 startActivity(new Intent(Image_cropActivity.this,PhotoEditingActivity.class));

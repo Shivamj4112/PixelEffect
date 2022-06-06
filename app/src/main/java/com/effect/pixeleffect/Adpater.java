@@ -49,6 +49,7 @@ public class Adpater extends RecyclerView.Adapter<Adpater.DataHolder>{
                 return true;
             }
         });
+
     }
 
     @Override

@@ -7,4 +7,13 @@
     <string name="more">MORE</string>
     <string name="trending_apps">Trending Apps</string>
     <string name="my_creation">My Creation</string>
+    <string name="glare">Glare</string>
+    <string name="color">Color</string>
+    <string name="effect">Effect</string>
+    <string name="_3d">3d</string>
+    <string name="filter">Filter</string>
+    <string name="flip">Flip</string>
+    <string name="rotate">Rotate</string>
+    <string name="sticker">Sticker</string>
+    <string name="text">Text</string>
 </resources>

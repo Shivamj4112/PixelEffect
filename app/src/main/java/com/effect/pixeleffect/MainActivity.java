@@ -144,5 +144,12 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+//    private void share() {
+//        Intent shareIntent = new Intent("android.intent.action.SEND");
+//        shareIntent.setType("image/*");
+//        shareIntent.putExtra("android.intent.extra.TEXT", Glob.package_name);
+//        shareIntent.putExtra("android.intent.extra.STREAM", Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher), (String) null, (String) null)));
+//        startActivity(Intent.createChooser(shareIntent, "Share Image using"));
+//    }
 
 }
