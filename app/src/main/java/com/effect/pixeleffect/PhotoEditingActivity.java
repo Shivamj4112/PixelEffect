@@ -120,7 +120,7 @@ public class PhotoEditingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View view) {
 
-                Toast.makeText(PhotoEditingActivity.this, "3D", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PhotoEditingActivity.this, "Effect", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
