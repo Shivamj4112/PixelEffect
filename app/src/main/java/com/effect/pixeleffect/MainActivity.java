@@ -132,24 +132,11 @@ public class MainActivity extends AppCompatActivity {
 
             uri = data.getData();
 
-//           bitmap = null;
-//            try {
-//                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
                 Intent intent = new Intent(MainActivity.this,Image_cropActivity.class);
                 startActivity(intent);
 
         }
     }
-//    private void share() {
-//        Intent shareIntent = new Intent("android.intent.action.SEND");
-//        shareIntent.setType("image/*");
-//        shareIntent.putExtra("android.intent.extra.TEXT", Glob.package_name);
-//        shareIntent.putExtra("android.intent.extra.STREAM", Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher), (String) null, (String) null)));
-//        startActivity(Intent.createChooser(shareIntent, "Share Image using"));
-//    }
+
 
 }

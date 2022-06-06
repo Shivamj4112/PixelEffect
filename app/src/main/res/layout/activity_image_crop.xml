@@ -6,29 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".Image_cropActivity">
 
-     <LinearLayout
+     <RelativeLayout
+         android:id="@+id/layout1"
          android:layout_width="match_parent"
-         android:layout_height="40dp"
+         android:layout_height="@dimen/_30sdp"
          android:background="@color/action_bar_color"
-         android:gravity="center">
+         android:gravity="center"
+         tools:ignore="MissingConstraints">
 
           <ImageView
-              android:id="@+id/done"
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:src="@drawable/ic_done"
+              android:id="@+id/arrow_backk"
+              android:layout_width="@dimen/_20sdp"
+              android:layout_height="@dimen/_20sdp"
               android:layout_gravity="center"
-              android:background="@drawable/ripple_oval"
               android:layout_marginEnd="10dp"
+              android:background="@drawable/ripple_oval"
+              android:src="@drawable/ic_arrow_back"
               app:tint="@color/white" />
-     </LinearLayout>
 
+          <ImageView
+              android:id="@+id/save"
+              android:layout_width="@dimen/_20sdp"
+              android:layout_height="@dimen/_20sdp"
+              android:layout_marginEnd="10dp"
+              android:layout_alignParentRight="true"
+              android:background="@drawable/ripple_oval"
+              android:src="@drawable/ic_done"
+              app:tint="@color/white" />
+     </RelativeLayout>
 
      <com.canhub.cropper.CropImageView
          android:id="@+id/cropImageView"
          android:layout_width="match_parent"
          android:layout_height="match_parent"
          app:cropAutoZoomEnabled="false"
-         android:layout_weight="1" />
+         android:layout_below="@+id/layout1"
+         tools:ignore="MissingConstraints" />
 
 </RelativeLayout>

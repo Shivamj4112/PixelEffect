@@ -1,6 +1,8 @@
 package com.effect.pixeleffect;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -9,6 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.io.File;
 
 public class PhotoEditingActivity extends AppCompatActivity {
 
@@ -39,7 +43,10 @@ public class PhotoEditingActivity extends AppCompatActivity {
         bottom_effect = findViewById(R.id.bottom_effect);
         save = findViewById(R.id.save);
 
-        imageView.setImageBitmap(Image_cropActivity.imageuri);
+//202011032
+
+
+        imageView.setImageBitmap(Image_cropActivity.bitmap);
 //        imageView.setImageURI(uri);
 //        imageView.setImageBitmap(MainActivity.uri);
 //        imageView.setImageURI(Image_cropActivity.uri);
@@ -48,18 +55,38 @@ public class PhotoEditingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                saveImage();;
 
             }
         });
-
-
-
 
         toolsClickandLongListener();
 
         // TODO Recycleview for bottom tools.
 //        bottom_tools.setLayoutManager(new LinearLayoutManager(PhotoEditingActivity.this,LinearLayoutManager.HORIZONTAL,false));
 //        bottom_tools.setAdapter(new Adpater(PhotoEditingActivity.this,mode_image,mode_text));
+    }
+
+    private void saveImage() {
+
+        imageView.setDrawingCacheEnabled(true);
+        imageView.buildDrawingCache();
+        imageView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        Bitmap bitmap = imageView.getDrawingCache();
+        save(bitmap);
+
+    }
+
+    private void save(Bitmap bitmap) {
+
+        String root = Environment.getExternalStorageDirectory().getAbsolutePath();
+        File file = new File(root+"/Download");
+        String filename = "my_image";
+        File myfile = new File(file,filename);
+
+
+
+
     }
 
     private void toolsClickandLongListener() {
