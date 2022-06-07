@@ -156,10 +156,8 @@ public class MainActivity extends AppCompatActivity {
 
             file.mkdir();
 
-            Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
         } else {
 
-            Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show();
         }
     }
 }
