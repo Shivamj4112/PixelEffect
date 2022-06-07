@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Image_cropActivity">
+    tools:context=".Activity.Image_cropActivity">
 
-     <RelativeLayout
-         android:id="@+id/layout1"
-         android:layout_width="match_parent"
-         android:layout_height="@dimen/_30sdp"
-         android:background="@color/action_bar_color"
-         android:gravity="center"
-         tools:ignore="MissingConstraints">
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@color/action_bar_color"
+        android:gravity="center"
+        tools:ignore="MissingConstraints">
 
-          <ImageView
+        <ImageView
               android:id="@+id/arrow_backk"
               android:layout_width="@dimen/_20sdp"
               android:layout_height="@dimen/_20sdp"

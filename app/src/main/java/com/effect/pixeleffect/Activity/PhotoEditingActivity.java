@@ -1,4 +1,4 @@
-package com.effect.pixeleffect;
+package com.effect.pixeleffect.Activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,20 +12,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.effect.pixeleffect.R;
+import com.effect.pixeleffect.adapter.Effect_Adapter;
+
 import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Calendar;
 
 public class PhotoEditingActivity extends AppCompatActivity {
 
-    ImageView imageView,save;
+    ImageView imageView, save;
 
     LinearLayout effect_layout;
-    LinearLayout tools_3d,tools_effect;
+    LinearLayout tools_3d, tools_effect;
 
-    RecyclerView bottom_effect,bottom_tools;
+    RecyclerView bottom_effect, bottom_tools;
 
-    int[] mode_image = new int[] {R.drawable.ic_3d,R.drawable.ic_effect,R.drawable.brush,R.drawable.ic_lenseflare,R.drawable.icon_edit,R.drawable.ic_text,
-                                  R.drawable.ic_sticker,R.drawable.ic_rotate,R.drawable.ic_flip};
-    String[] mode_text = new String[] {"3D","Effect","Color","Glare","Filter","Text","Sticker","Rotate","Flip"};
+    int Hour, Minutes, Seconds;
+
+    String file_name = "SastaEffct";
+
+//    int[] mode_image = new int[] {R.drawable.ic_3d,R.drawable.ic_effect,R.drawable.brush,R.drawable.ic_lenseflare,R.drawable.icon_edit,R.drawable.ic_text,
+//                                  R.drawable.ic_sticker,R.drawable.ic_rotate,R.drawable.ic_flip};
+//    String[] mode_text = new String[] {"3D","Effect","Color","Glare","Filter","Text","Sticker","Rotate","Flip"};
+
+
+    int[] Filter_img = new int[]{R.drawable.effect_photo};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +59,7 @@ public class PhotoEditingActivity extends AppCompatActivity {
 
 
         imageView.setImageBitmap(Image_cropActivity.bitmap);
-//        imageView.setImageURI(uri);
-//        imageView.setImageBitmap(MainActivity.uri);
-//        imageView.setImageURI(Image_cropActivity.uri);
+
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,12 +89,48 @@ public class PhotoEditingActivity extends AppCompatActivity {
 
     private void save(Bitmap bitmap) {
 
+        Calendar c = Calendar.getInstance();
+        Hour = c.get(Calendar.HOUR_OF_DAY);
+        Minutes = c.get(Calendar.MINUTE);
+        Seconds = c.get(Calendar.SECOND);
+
+        String time = Hour + "" + Minutes + "" + Seconds;
+
+        Calendar ca = Calendar.getInstance();
+        int day = ca.get(Calendar.DAY_OF_MONTH);
+        int month = ca.get(Calendar.MONTH);
+        int year = ca.get(Calendar.YEAR);
+        String date = year + "" + (month + 1) + "" + day;
+
+
         String root = Environment.getExternalStorageDirectory().getAbsolutePath();
-        File file = new File(root+"/Download");
-        String filename = "my_image";
-        File myfile = new File(file,filename);
+//        String root = Environment.getExternalStorageDirectory()+"/SastaEffect";
+        File file = new File(root + "/SastaEffect");
+        String filename = "IMG-" + date + "-" + time + ".jpg";
+        File myfile = new File(file, filename);
 
 
+//        createfolder(file_name);
+
+        if (myfile.exists()) {
+
+            myfile.delete();
+        }
+
+        try {
+
+
+            FileOutputStream fileOutputStream = new FileOutputStream(myfile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+
+            imageView.setDrawingCacheEnabled(false);
+        } catch (Exception e) {
+
+            Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
 
     }
@@ -107,8 +153,8 @@ public class PhotoEditingActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 effect_layout.setVisibility(View.VISIBLE);
-          bottom_effect.setLayoutManager(new LinearLayoutManager(PhotoEditingActivity.this, LinearLayoutManager.HORIZONTAL,false));
-        bottom_effect.setAdapter(new Adpater(PhotoEditingActivity.this,mode_image,mode_text));
+                bottom_effect.setLayoutManager(new LinearLayoutManager(PhotoEditingActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                bottom_effect.setAdapter(new Effect_Adapter(PhotoEditingActivity.this, Filter_img));
 
 
             }

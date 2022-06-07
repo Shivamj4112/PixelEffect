@@ -1,4 +1,4 @@
-package com.effect.pixeleffect;
+package com.effect.pixeleffect.Activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.canhub.cropper.CropImageView;
+import com.effect.pixeleffect.R;
 
 public class Image_cropActivity extends AppCompatActivity {
 

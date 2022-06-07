@@ -1,4 +1,4 @@
-package com.effect.pixeleffect;
+package com.effect.pixeleffect.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -12,7 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Adpater extends RecyclerView.Adapter<Adpater.DataHolder>{
+import com.effect.pixeleffect.Activity.PhotoEditingActivity;
+import com.effect.pixeleffect.R;
+
+public class Adpater extends RecyclerView.Adapter<Adpater.DataHolder> {
 
     Activity activity;
     int[] mode_image;

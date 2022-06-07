@@ -1,4 +1,4 @@
-package com.effect.pixeleffect;
+package com.effect.pixeleffect.Activity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,18 +20,24 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.effect.pixeleffect.R;
+
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
-    ImageView more_vert,image;
-    LinearLayout album,start;
-   public static Uri uri;
+    ImageView more_vert, image;
+    LinearLayout album, start;
+    public static Uri uri;
     public static Bitmap bitmap;
     int REQUEST_IMAGE_CODE = 10;
+    String file_name = "SastaEffect";
+
 
     private static final String TAG = MainActivity.class.getSimpleName();
     public static final int REQUEST_IMAGE = 100;
 
-    String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE};
+    String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +60,12 @@ public class MainActivity extends AppCompatActivity {
                 if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
 
                     requestPermissions(permission,REQUEST_IMAGE_CODE);
+
+
                 }
                  else{
 
+                    createfolder(file_name);
                     onChooseImage();
 
                 }
@@ -128,15 +138,28 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if (resultCode == RESULT_OK && requestCode == REQUEST_IMAGE_CODE){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_IMAGE_CODE) {
 
             uri = data.getData();
 
-                Intent intent = new Intent(MainActivity.this,Image_cropActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, Image_cropActivity.class);
+            startActivity(intent);
 
         }
     }
 
+    private void createfolder(String file_name) {
 
+        File file = Environment.getExternalStoragePublicDirectory("" + file_name);
+
+        if (!file.exists()) {
+
+            file.mkdir();
+
+            Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
+        } else {
+
+            Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
