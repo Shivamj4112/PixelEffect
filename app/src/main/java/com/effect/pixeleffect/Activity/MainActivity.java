@@ -9,16 +9,19 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.effect.pixeleffect.R;
 
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public static Bitmap bitmap;
     int REQUEST_IMAGE_CODE = 10;
     String file_name = "SastaEffect";
+    TextView apps;
 
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -59,16 +63,21 @@ public class MainActivity extends AppCompatActivity {
 
                 if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
 
-                    requestPermissions(permission,REQUEST_IMAGE_CODE);
+                    requestPermissions(permission, REQUEST_IMAGE_CODE);
 
+                } else {
+
+//                    createfolder(file_name);
+//                   onChooseImage();
+                    isStoragePermissionGranted1();
 
                 }
-                 else{
+//                isStoragePermissionGranted1();
+//                createfolder(file_name);
 
-                    createfolder(file_name);
-                    onChooseImage();
+//                apps.setText(createfolder(file_name).getPath());
 
-                }
+
             }
         });
 
@@ -130,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         more_vert = findViewById(R.id.more_vert);
         album = findViewById(R.id.album);
         start = findViewById(R.id.start);
+        apps = findViewById(R.id.apps);
     }
 
 
@@ -148,16 +158,69 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void createfolder(String file_name) {
+    //  TODO create folder for android 11+ devices
+//    private File createfolder1(String file_name) {
+//
+//        File file = new File(getExternalFilesDir(null)+"/"+file_name);
+//
+//        if (!file.exists()) {
+//
+//            file.mkdir();
+//            Toast.makeText(this, "f1 success", Toast.LENGTH_SHORT).show();
+//
+//        } else {
+//            Toast.makeText(this, "f1 Fail", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        return file;
+//    }
 
-        File file = Environment.getExternalStoragePublicDirectory("" + file_name);
+    private void createfolder2(String file_name) {
+
+        File file = new File(Environment.getExternalStorageDirectory(), "/Pictures" + "/" + file_name);
 
         if (!file.exists()) {
 
             file.mkdir();
 
         } else {
+            Toast.makeText(this, "Welcome Back", Toast.LENGTH_SHORT).show();
+        }
 
+    }
+
+    public boolean isStoragePermissionGranted1() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                Log.v("Ssss", "Permission is granted");
+
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+
+//                    createfolder1(file_name); // TODO create folder for android 11+ devices
+                createfolder2(file_name);
+                onChooseImage();
+
+//                }
+//                else{
+//
+//                    createfolder2(file_name);
+//                    onChooseImage();
+//                }
+
+
+                return true;
+            } else {
+
+                Log.v("Ssss", "Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("Ssss", "Permission is granted");
+
+            createfolder2(file_name);
+            onChooseImage();
+            return true;
         }
     }
 }

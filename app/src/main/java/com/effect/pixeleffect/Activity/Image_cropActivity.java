@@ -15,7 +15,7 @@ public class Image_cropActivity extends AppCompatActivity {
 
     ImageView done;
     public static CropImageView cropImageView;
-  public static Bitmap bitmap;
+    public static Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +25,17 @@ public class Image_cropActivity extends AppCompatActivity {
         done = findViewById(R.id.save);
         cropImageView = findViewById(R.id.cropImageView);
 
+
         cropImageView.setImageUriAsync(MainActivity.uri);
+
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-               bitmap = cropImageView.getCroppedImage();
+                bitmap = cropImageView.getCroppedImage();
 
-                startActivity(new Intent(Image_cropActivity.this,PhotoEditingActivity.class));
+                startActivity(new Intent(Image_cropActivity.this, PhotoEditingActivity.class));
             }
         });
     }

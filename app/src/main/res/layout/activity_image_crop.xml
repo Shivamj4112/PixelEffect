@@ -15,16 +15,17 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
-              android:id="@+id/arrow_backk"
-              android:layout_width="@dimen/_20sdp"
-              android:layout_height="@dimen/_20sdp"
-              android:layout_gravity="center"
-              android:layout_marginEnd="10dp"
-              android:background="@drawable/ripple_oval"
-              android:src="@drawable/ic_arrow_back"
-              app:tint="@color/white" />
+            android:id="@+id/arrow_backk"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ripple_oval"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
 
-          <ImageView
+
+        <ImageView
               android:id="@+id/save"
               android:layout_width="@dimen/_20sdp"
               android:layout_height="@dimen/_20sdp"

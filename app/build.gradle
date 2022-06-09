@@ -39,5 +39,7 @@ dependencies {
     implementation 'com.github.CanHub:Android-Image-Cropper:4.0.0'
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.github.QuadFlask:colorpicker:0.0.15'
+
 
 }
