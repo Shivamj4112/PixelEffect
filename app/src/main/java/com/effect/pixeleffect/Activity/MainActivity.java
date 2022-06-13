@@ -33,13 +33,11 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout album, start;
     public static Uri uri;
     public static Bitmap bitmap;
-    int REQUEST_IMAGE_CODE = 10;
+    final int REQUEST_IMAGE_CODE = 10;
     String file_name = "SastaEffect";
     TextView apps;
 
-
     private static final String TAG = MainActivity.class.getSimpleName();
-    public static final int REQUEST_IMAGE = 100;
 
     String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
 
@@ -51,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
         binding();
         onclick();
 
-
-
     }
 
     private void onclick() {
@@ -61,22 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-
-                    requestPermissions(permission, REQUEST_IMAGE_CODE);
-
-                } else {
-
-//                    createfolder(file_name);
-//                   onChooseImage();
                     isStoragePermissionGranted1();
-
-                }
-//                isStoragePermissionGranted1();
-//                createfolder(file_name);
-
-//                apps.setText(createfolder(file_name).getPath());
-
 
             }
         });
@@ -199,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
 //                    createfolder1(file_name); // TODO create folder for android 11+ devices
                 createfolder2(file_name);
                 onChooseImage();
+                requestPermissions(permission, REQUEST_IMAGE_CODE);
 
 //                }
 //                else{
@@ -220,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
             createfolder2(file_name);
             onChooseImage();
+
             return true;
         }
     }

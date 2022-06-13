@@ -15,21 +15,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
             android:text="@string/app_name"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp"
-            android:layout_marginStart="5dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:textSize="@dimen/_15sdp" />
 
         <ImageView
             android:id="@+id/save"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/ic_save"
             android:layout_gravity="center"
-            android:background="@drawable/ripple_effect_box"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/ripple_effect_box"
+            android:src="@drawable/ic_save"
             app:tint="@color/white" />
 
     </LinearLayout>
@@ -46,16 +46,29 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
             android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/glare"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
 
         <ImageView
             android:id="@+id/frame_3d"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/effect_3d_1"
             app:tint="@color/red" />
+
+        <ImageView
+            android:id="@+id/sticker_image"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
 
 
     </FrameLayout>
@@ -84,22 +97,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout_3d"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/action_bar_color"
-            android:visibility="gone">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/bottom_3d_effect"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/layout_effect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,8 +111,8 @@
 
 
         </LinearLayout>
-    </LinearLayout>
 
+    </LinearLayout>
 
     <HorizontalScrollView
         android:id="@+id/bottom_nav"
@@ -125,11 +122,11 @@
         android:background="@color/action_bar_color"
         android:scrollbars="none">
 
-
         <LinearLayout
             android:id="@+id/tools"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
+            android:gravity="center"
             android:background="@color/action_bar_color">
 
             <!--        <androidx.recyclerview.widget.RecyclerView-->
@@ -164,6 +161,7 @@
                     android:text="@string/_3d"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/tools_effect"
                 android:layout_width="@dimen/_60sdp"
@@ -190,6 +188,7 @@
                     android:text="@string/effect"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/tools_color"
                 android:layout_width="@dimen/_60sdp"
@@ -216,6 +215,7 @@
                     android:text="@string/color"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/tools_glare"
                 android:layout_width="@dimen/_60sdp"
@@ -242,6 +242,7 @@
                     android:text="@string/glare"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/tools_filter"
                 android:layout_width="@dimen/_60sdp"
@@ -268,6 +269,7 @@
                     android:text="@string/filter"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/tools_text"
                 android:layout_width="@dimen/_60sdp"
@@ -294,6 +296,7 @@
                     android:text="@string/text"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/tools_sticker"
                 android:layout_width="@dimen/_60sdp"
@@ -320,6 +323,7 @@
                     android:text="@string/sticker"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/tools_rotate"
                 android:layout_width="@dimen/_60sdp"
@@ -346,6 +350,7 @@
                     android:text="@string/rotate"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/tools_flip"
                 android:layout_width="@dimen/_60sdp"
@@ -373,8 +378,140 @@
                     android:textColor="@color/white" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/tools_flip_vertical"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_effect_box"
+                android:clickable="true"
+                android:longClickable="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:rotation="270"
+                    android:src="@drawable/ic_flip"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/tools_flip_text_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:gravity="center"
+                    android:text="@string/flip"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
 
         </LinearLayout>
 
     </HorizontalScrollView>
+
+    <RelativeLayout
+        android:id="@+id/sticker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CE000000"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:id="@+id/action_bar_sticker"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="#2C2C2C">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/select_sticker"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp" />
+
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_sticker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/sticker_bottom"
+            android:layout_below="@+id/action_bar_sticker" />
+
+        <RelativeLayout
+            android:id="@+id/sticker_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_alignParentBottom="true"
+            android:background="#2C2C2C">
+
+            <ImageView
+                android:id="@+id/img_1"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:src="@drawable/a3" />
+
+            <ImageView
+                android:id="@+id/img_2"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_toRightOf="@+id/img_1"
+                android:src="@drawable/monster_05" />
+
+            <ImageView
+                android:id="@+id/img_3"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_toRightOf="@+id/img_2"
+                android:src="@drawable/l8" />
+
+            <ImageView
+                android:id="@+id/img_4"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_toRightOf="@+id/img_3"
+                android:src="@drawable/wedding06" />
+
+            <ImageView
+                android:id="@+id/img_5"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_toRightOf="@+id/img_4"
+                android:src="@drawable/s14" />
+
+            <ImageView
+                android:id="@+id/img_6"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:src="@drawable/b3" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
 </RelativeLayout>

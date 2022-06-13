@@ -47,6 +47,7 @@ public class Effect_Adapter extends RecyclerView.Adapter<Effect_Adapter.Effect_h
 
                 PhotoEditingActivity.effects_effect(effect_effect[position]);
 
+
             }
         });
 
