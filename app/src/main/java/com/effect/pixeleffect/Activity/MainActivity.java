@@ -3,7 +3,6 @@ package com.effect.pixeleffect.Activity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView more_vert, image;
     LinearLayout album, start;
     public static Uri uri;
-    public static Bitmap bitmap;
     final int REQUEST_IMAGE_CODE = 10;
     String file_name = "SastaEffect";
     TextView apps;
